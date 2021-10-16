@@ -1,0 +1,345 @@
+
+//const int relay1=10;
+int QUIZ_RELAY7 = 7;
+int QUIZ_RELAY6 = 8;
+int QUIZ_RELAY1 = 9;  // LED connected to digital pin 13
+int QUIZ_RELAY2 = 10;
+int QUIZ_RELAY3 = 11;
+int QUIZ_RELAY4 = 12;
+int QUIZ_RELAY5 = 13;
+
+
+/////////////////////////////////////
+
+////////////////INPUT 4s
+
+int QUIZ_INPUT1 = 2;
+int QUIZ_INPUT2 = 3;
+int QUIZ_INPUT3 = 4;
+int QUIZ_INPUT4 = 5;
+int QUIZ_INPUT5 = 6;
+
+//
+int inPin = 7;    // pushbutton connected to digital pin 7
+int val = 0;      // variable to store the read value
+void ALL_RELAY_OFF()
+{
+
+  digitalWrite(QUIZ_RELAY1, HIGH);
+  digitalWrite(QUIZ_RELAY2, HIGH);
+  digitalWrite(QUIZ_RELAY3, HIGH);
+  digitalWrite(QUIZ_RELAY4, HIGH);
+  digitalWrite(QUIZ_RELAY5, HIGH);
+
+}
+void RELAY_D7_Test()
+{
+  //ALL_RELAY_OFF();
+  delay(1000);
+  digitalWrite(7, LOW); //QUIZ_RELAY2, LOW); //  digitalWrite(D12,LOW);// HIGH);
+  delay(1000);
+  digitalWrite(7, HIGH);
+}
+void RELAY_D8_Test()
+{
+  //ALL_RELAY_OFF();
+  delay(1000);
+  digitalWrite(8, LOW); //QUIZ_RELAY2, LOW); //  digitalWrite(D12,LOW);// HIGH);
+  delay(1000);
+  digitalWrite(8, HIGH);
+}
+void RELAY_D9_Test()
+{
+  //ALL_RELAY_OFF();
+  delay(1000);
+  digitalWrite(9, LOW); //QUIZ_RELAY2, LOW); //  digitalWrite(D12,LOW);// HIGH);
+  delay(1000);
+  digitalWrite(9, HIGH);
+}
+void RELAY_D11_Test()
+{
+  //ALL_RELAY_OFF();
+  delay(1000);
+  digitalWrite(11, LOW); //QUIZ_RELAY2, LOW); //  digitalWrite(D12,LOW);// HIGH);
+  delay(1000);
+  digitalWrite(11, HIGH);
+}
+void RELAY_D10_Test()
+{
+  //ALL_RELAY_OFF();
+  delay(1000);
+  digitalWrite(10, LOW); //QUIZ_RELAY2, LOW); //  digitalWrite(D12,LOW);// HIGH);
+  delay(1000);
+  digitalWrite(10, HIGH);
+}
+void RELAY_D12_Test()
+{
+  //ALL_RELAY_OFF();
+  delay(1000);
+  digitalWrite(12, LOW); //QUIZ_RELAY2, LOW); //  digitalWrite(D12,LOW);// HIGH);
+  delay(1000);
+  digitalWrite(12, HIGH);
+}
+
+void RELAY_D13_Test()
+{
+  //ALL_RELAY_OFF();
+  delay(1000);
+  digitalWrite(13, LOW); //QUIZ_RELAY2, LOW); //  digitalWrite(D12,LOW);// HIGH);
+  Serial.println("\nlow");
+  delay(1000);
+  digitalWrite(13, HIGH);
+  Serial.println("\nhigh");
+}
+
+
+void setup() {
+  pinMode(QUIZ_RELAY1, OUTPUT);  // sets the digital pin 13 as output
+  pinMode(QUIZ_RELAY2, OUTPUT);  // sets the digital pin 13 as output
+  pinMode(QUIZ_RELAY3, OUTPUT);  // sets the digital pin 13 as output
+  pinMode(QUIZ_RELAY4, OUTPUT);
+  pinMode(QUIZ_RELAY5, OUTPUT);
+  pinMode(QUIZ_RELAY6, OUTPUT);
+  pinMode(QUIZ_RELAY7, OUTPUT);
+
+  ////////////////////////////////////////////QUIZ INPUT INIT
+
+
+  pinMode(QUIZ_INPUT1, INPUT_PULLUP);
+  pinMode(QUIZ_INPUT2, INPUT_PULLUP);
+  pinMode(QUIZ_INPUT3, INPUT_PULLUP);
+  pinMode(QUIZ_INPUT4, INPUT_PULLUP);
+  pinMode(QUIZ_INPUT5, INPUT_PULLUP);
+
+  /////////////////////////
+
+
+  //pinMode(inPin, INPUT);    // sets the digital pin 7 as input
+  Serial.begin(115200);           // set up Serial library at 9600 bps
+  //ALL_RELAY_OFF();
+  ALL_RELAY_OFFS();
+  Serial.println("\nWHO IS FASTER IN QUIZ - DETECTOR!!");//
+
+ 
+
+
+}
+void TestSequence()
+{
+  ALL_RELAY_OFF();
+  digitalWrite(QUIZ_RELAY1, LOW);
+  delay(1000);
+  ALL_RELAY_OFF();
+  digitalWrite(QUIZ_RELAY2, LOW);
+  delay(1000);
+  ALL_RELAY_OFF();
+  digitalWrite(QUIZ_RELAY3, LOW);
+  delay(1000);
+  ALL_RELAY_OFF();
+  digitalWrite(QUIZ_RELAY4, LOW);
+  delay(1000);
+  ALL_RELAY_OFF();
+  digitalWrite(QUIZ_RELAY5, LOW);
+  delay(1000);
+
+}
+
+#define BUZZER_TIMES 3
+#define BUZZER_DELAY_ON 300
+#define BUZZER_DELAY_OFF 500
+
+
+int readInput1 = 0;
+int readInput2 = 0; int readInput3 = 0; int readInput4 = 0; int readInput5 = 0;
+void loop11()
+{
+  //RELAY_D12_Test();
+  //delay(1000);
+  RELAY_D7_Test();
+
+
+}
+
+#define RELAY_D12 12
+#define RELAY_D13 13
+#define RELAY_D11 11
+#define RELAY_D10 10
+#define RELAY_D7 7
+#define RELAY_D9 9
+
+#define BUZZER_RELAY RELAY_D7
+void ALL_RELAY_OFFS()
+{
+
+  
+ digitalWrite(11, HIGH);
+    digitalWrite(12, HIGH);
+      digitalWrite(13, HIGH);
+       digitalWrite(12, HIGH);
+        digitalWrite(10, HIGH);
+         digitalWrite(7, HIGH);
+ digitalWrite(9, HIGH);
+
+  digitalWrite(BUZZER_RELAY, HIGH);
+}
+int resetclear=0;
+void loop()
+{
+  if(resetclear==0){
+  if (digitalRead(QUIZ_INPUT1) == LOW)
+
+  { 
+    resetclear=1;
+    Serial.println("Switch input 1 ORANGE is  pressed");
+    ALL_RELAY_OFFS();
+    digitalWrite(13, LOW);
+    for (int i = 0; i < BUZZER_TIMES; i++) {
+      digitalWrite(BUZZER_RELAY, LOW);
+      delay(BUZZER_DELAY_ON);
+      digitalWrite(BUZZER_RELAY, HIGH);
+      delay(BUZZER_DELAY_OFF);
+    }
+
+    //completed
+  }
+
+  if (digitalRead(QUIZ_INPUT2) == LOW)
+
+  {
+       resetclear=1;
+    Serial.println("Switch input 2 BROWN is  pressed");
+    ALL_RELAY_OFFS();
+    digitalWrite(12, LOW);
+    for (int i = 0; i < BUZZER_TIMES; i++) {
+      digitalWrite(BUZZER_RELAY, LOW);
+      delay(BUZZER_DELAY_ON);
+      digitalWrite(BUZZER_RELAY, HIGH);
+      delay(BUZZER_DELAY_OFF);
+    }
+
+  }
+
+  if (digitalRead(QUIZ_INPUT3) == LOW)
+
+  { 
+        resetclear=1;
+    Serial.println("Switch input 3 BLUE is  pressed");
+    ALL_RELAY_OFFS();
+    digitalWrite(11, LOW);
+    for (int i = 0; i < BUZZER_TIMES; i++) {
+      digitalWrite(BUZZER_RELAY, LOW);
+      delay(BUZZER_DELAY_ON);
+      digitalWrite(BUZZER_RELAY, HIGH);
+      delay(BUZZER_DELAY_OFF);
+    }
+  }
+  if (digitalRead(QUIZ_INPUT4) == LOW)
+
+  { 
+        resetclear=1;
+  Serial.println("Switch input 4 GREEN is  pressed");
+    ALL_RELAY_OFFS();
+    digitalWrite(10, LOW);
+    for (int i = 0; i < BUZZER_TIMES; i++) {
+      digitalWrite(BUZZER_RELAY, LOW);
+      delay(BUZZER_DELAY_ON);
+      digitalWrite(BUZZER_RELAY, HIGH);
+      delay(BUZZER_DELAY_OFF);
+    }
+    
+  }
+
+
+
+
+  }
+
+
+}
+////////////ver1
+void loop1() {
+  //TestSequence();
+  readInput1 = digitalRead(QUIZ_INPUT1);
+  readInput2 = digitalRead(QUIZ_INPUT2);
+  readInput3 = digitalRead(QUIZ_INPUT3);
+  readInput4 = digitalRead(QUIZ_INPUT4);
+  readInput5 = digitalRead(QUIZ_INPUT5);
+
+  if ((LOW == readInput1) && (HIGH == readInput2) && (HIGH == readInput3) && (HIGH == readInput3) && (HIGH == readInput4) && (HIGH == readInput5))
+  {
+    ALL_RELAY_OFF();
+    digitalWrite(QUIZ_RELAY1, LOW);
+    for (int i = 0; i < BUZZER_TIMES; i++) {
+      digitalWrite(QUIZ_RELAY5, LOW);
+      delay(BUZZER_DELAY_ON);
+      digitalWrite(QUIZ_RELAY5, HIGH);
+      delay(BUZZER_DELAY_OFF);
+    }
+    Serial.println("\nNOW SWITCH INPUT1 IS PRESSED");//
+  }
+  else  if ((HIGH == readInput1) && (LOW == readInput2) && (HIGH == readInput3) && (HIGH == readInput3) && (HIGH == readInput4) && (HIGH == readInput5))
+  {
+    ALL_RELAY_OFF();
+    digitalWrite(QUIZ_RELAY1, LOW);
+    for (int i = 0; i < BUZZER_TIMES; i++) {
+      digitalWrite(QUIZ_RELAY5, LOW);
+      delay(BUZZER_DELAY_ON);
+      digitalWrite(QUIZ_RELAY5, HIGH);
+      delay(BUZZER_DELAY_OFF);
+    }
+    Serial.println("\nNOW SWITCH INPUT2 IS PRESSED");//
+  }
+  else  if ((HIGH == readInput1) && (HIGH == readInput2) && (LOW == readInput3) && (HIGH == readInput3) && (HIGH == readInput4) && (HIGH == readInput5))
+  {
+    ALL_RELAY_OFF();
+    digitalWrite(QUIZ_RELAY2, LOW);
+    for (int i = 0; i < BUZZER_TIMES; i++) {
+      digitalWrite(QUIZ_RELAY5, LOW);
+      delay(BUZZER_DELAY_ON);
+      digitalWrite(QUIZ_RELAY5, HIGH);
+      delay(BUZZER_DELAY_OFF);
+    }
+    Serial.println("\nNOW SWITCH INPUT2 IS PRESSED");//
+  }
+  else if ((HIGH == readInput1) && (HIGH == readInput2) && (HIGH == readInput3) && (LOW == readInput3) && (HIGH == readInput4) && (HIGH == readInput5))
+  {
+    ALL_RELAY_OFF();
+    digitalWrite(QUIZ_RELAY3, LOW);
+    for (int i = 0; i < BUZZER_TIMES; i++) {
+      digitalWrite(QUIZ_RELAY5, LOW);
+      delay(BUZZER_DELAY_ON);
+      digitalWrite(QUIZ_RELAY5, HIGH);
+      delay(BUZZER_DELAY_OFF);
+    }
+    Serial.println("\nNOW SWITCH INPUT3 IS PRESSED");//
+  }
+  else if ( (HIGH == readInput1) && (HIGH == readInput2) && (HIGH == readInput3) && (HIGH == readInput3) && (LOW == readInput4) && (HIGH == readInput5))
+  {
+    ALL_RELAY_OFF();
+    digitalWrite(QUIZ_RELAY4, LOW);
+    for (int i = 0; i < BUZZER_TIMES; i++) {
+      digitalWrite(QUIZ_RELAY5, LOW);
+      delay(BUZZER_DELAY_ON);
+      digitalWrite(QUIZ_RELAY5, HIGH);
+      delay(BUZZER_DELAY_OFF);
+      Serial.println("\nNOW SWITCH INPUT4 IS PRESSED");//
+    }
+  }
+  else if ((HIGH == readInput1) && (HIGH == readInput2) && (HIGH == readInput3) && (HIGH == readInput3) && (HIGH == readInput4) && (LOW == readInput5))
+  {
+    ALL_RELAY_OFF();
+    Serial.println("\nNOW IT IS RESET");//
+
+  }
+  else
+  {
+    ;
+  }
+
+
+
+
+
+
+
+}
